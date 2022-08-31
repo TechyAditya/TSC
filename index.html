@@ -10,10 +10,28 @@
 	<link rel="canonical" href="https://www.talentsprintclasses.com/">
 	<!-- Bootstrap CDNS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-	<!-- Font Awesome CDNS -->
+    <!-- Font Awesome CDNS -->
     <script src="https://kit.fontawesome.com/cdcfed7af7.js" crossorigin="anonymous"></script>
 	<style>
+		::-webkit-scrollbar {
+			width: 7px;
+		}
+		/* Track */
+		::-webkit-scrollbar-track {
+			box-shadow: inset 0 0 5px grey; 
+			border-radius: 10px;
+		}
+		
+		/* Handle */
+		::-webkit-scrollbar-thumb {
+			background: #38A3A5; 
+			border-radius: 10px;
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #22577A; 
+		}
 		.bd-placeholder-img {
 			font-size: 1.125rem;
 			text-anchor: middle;
@@ -97,7 +115,7 @@
 
 	<main role="main" id="content" class="tab-content" style="min-height: 85vh;">
 		<div id="home" class="tab-pane fade show active" class="tab-content" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-			<div id="Banners" class="carousel slide mb-4" data-bs-ride="carousel">
+			<div id="Banners" class="shadow carousel slide mb-4" data-bs-ride="carousel">
 				<div class="carousel-indicators">
 					<button type="button" data-bs-target="#Banners" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 					<button type="button" data-bs-target="#Banners" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -199,7 +217,7 @@
 						<div id="extras" class="row p-4">
 							<div id="Enquiry" class="col-md-6 p-2">
 								<div class="rounded" style="background-color: #57cc99;">
-									<h2 class="py-2">Let's Get in Touch</h2>
+									<h2 class="py-2 underline">Let's Get in Touch</h2>
 									<form>
 										<div class="col-md-11 px-3 mx-3">
 											<select id="selectCourse" class="form-select mx-1 px-1">
@@ -239,7 +257,7 @@
 							</div>
 							<div id="Notices" class="col-md-6 p-2">
 								<div class="rounded" style="background-color: #57cc99;">
-									<h2 class="py-2">Notices</h2>
+									<h2 class="py-2 underline">Notices</h2>
 									<div id="notice1" class="col-md-11 px-md-3">
 										<h5>New Batches Starting Soon</h5>
 										<p>CBSE and ICSE batches from class 6th to 10th starting soon</p>
@@ -267,7 +285,7 @@
 					<div id="toppers" class="col-md-3 px-md-3 mx-md-3">
 						<div class="row">
 							<div class="col-lg-12">
-								<h2 class="m-md-2 py-md-4 d-flex justify-content-center border-bottom heading"> Our Polished Gems</h2>
+								<h2 class="shadow m-md-2 py-md-4 d-flex justify-content-center heading"> Our Polished Gems</h2>
 							</div>
 							<div id="toppers" style="height:125vh; overflow-y: auto; overflow-x: hidden;">
 								<div class="col-lg-12">
@@ -350,7 +368,7 @@
 			</div>
 		</div>
 		<div id="success" class="tab-pane fade" class="tab-content" role="tabpanel" aria-labelledby="pills-success-tab" tabindex="0">
-			<div id="content" class="container-fluid my-5 p-5">
+			<div id="content" class="container-fluid">
 				<div class="row featurette">
 					<section class="container-fluid">
 						<div class="light-overlay">
@@ -431,7 +449,6 @@
 						</div>
 					</section> 
 				</div>
-				<hr class="featurette-divider">
 			  
 				<div class="row featurette">
 					<section class="container-fluid">
@@ -513,7 +530,6 @@
 						</div>
 					</section> 
 				</div>
-				<hr class="featurette-divider">
 			  
 				<div class="row featurette">
 					<section class="container-fluid">
@@ -645,19 +661,19 @@
 			<div id="content" class="container-fluid my-5 p-5">
 				<div id="contact" class="row featurette">
 					<div class="col-md-12">
-						<h2 class="featurette-heading pb-md-2 border-bottom"><span class="text-muted">DON'T BE SHY,</span> LET'S TALK ABOUT EVERYTHING.</h2>
+						<h2 class="featurette-heading pb-md-2"><span class="text-muted">DON'T BE SHY,</span> LET'S TALK ABOUT EVERYTHING.</h2>
 						<h4 class="quote">"You don't have to see the whole staircase, just take the first step."</h4>
 						<div class="row">
-							<div class="col-md-4 px-5 mt-4">
+							<div class="col-md-4 px-md-5 mt-2">
 								<h2 class="pb-md-1"><b>Visiting Time</b></h2>
 								<p>Monday to Saturday : <br> 8:30 A.M. to 2:00 P.M. (MORNING) <br> 3:30 P.M. to 8:30 P.M. (EVENING)</p>
 								<p>Sunday : <br> 8 : 30 A.M. to 2 : 30 P.M. (MORNING)</p>
 							</div>
-							<div class="col-md-4 px-5 mt-4"> 
+							<div class="col-md-4 px-md-5 mt-2"> 
 								<h2 class="pb-md-1"><b>Locate Us</b></h2>
 								<p>TALENT SPRINT CLASSES, <br> GAJAPATI NAGAR MAIN LANE, <br> BEHIND STATE BANK OF INDIA ADB BRANCH, <br> BERHAMPUR - 760010 (ODISHA) India</p>
 							</div>
-							<div class="col-md-4 px-5 mt-4">
+							<div class="col-md-4 px-md-5 mt-2">
 								<h2 class="pb-md-1"><b>Write or Ring Us</b></h2>
 								<p>bidwanclasses.brahmapur@gmail.com <br> tsc.bam@rediffmail.com <br> admin@bidwanclasses.com</p>
 								<p>+91-9438339317, 9040612211, 9439133317</p>
@@ -668,46 +684,23 @@
 				<hr class="featurette-divider">
 			  
 				<div id="map" class="row featurette">
-					<section class="container-fluid">
-						<div class="light-overlay">
-							<div class="container">
-								<h2>Map</h2>
-								<div class="photo-section">
-									<div id="awards" class="carousel slide" data-bs-ride="carousel">
-										<div class="carousel-indicators">
-											<button type="button" data-bs-target="#awards" data-bs-slide-to="0" class="active"></button>
-										</div>
-					
-										<div class="carousel-inner">
-											<div class="carousel-item active">
-												<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-												<div class="container">
-													<div class="carousel-caption text-start">
-														<h1>Example headline.</h1>
-														<p>Some representative placeholder content for the first slide of the carousel.</p>
-														<p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-													</div>
-												</div>
-											</div>
-										</div>
-					
-										<button class="carousel-control-prev" type="button" data-bs-target="#awards" data-bs-slide="prev">
-											<span class="carousel-control-prev-icon"></span>
-										</button>
-										<button class="carousel-control-next" type="button" data-bs-target="#awards" data-bs-slide="next">
-											<span class="carousel-control-next-icon"></span>
-										</button>
-									</div>
+					<div class="col-md-12">
+						<h2 class="featurette-heading pb-md-2">Find Us Here.</h2>
+						<section class="container-fluid">
+							<div id="frm-container" class="col-md-12 rounded flex-grow-1">
+								<div id="frame" class="shadow container-fluid" style="overflow: hidden; border-radius: 0.25em;">
+									<iframe id="view" class="responsive-iframe" src="https://maps.google.com/maps?q=Bidwan%20Classes%20,main%20lane,%20Gajapati%20Nagar,%20Brahmapur,%20Odisha%20760010,%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+									allowfullscreen></iframe>
 								</div>
 							</div>
-						</div>
-					</section> 
+						</section> 
+					</div>
 				</div>
 				<hr class="featurette-divider">
 			  
 				<div id="faq" class="row featurette">
 					<div class="col-md-12">
-						<h2 class="featurette-heading pb-md-2">FAQs</h2>
+						<h2 class="shadow featurette-heading pb-md-2">FAQs</h2>
 						<div class="accordion" id="qna">
 							<div class="accordion-item">
 								<h2 class="accordion-header" id="headingOne">
@@ -762,7 +755,7 @@
 		</div>
 	</footer> 
 
-	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<script>
         (new IntersectionObserver((e,o) => {
             if (e[0].intersectionRatio > 0)

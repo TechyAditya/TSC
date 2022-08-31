@@ -46,15 +46,36 @@
 					<button class="nav-link" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#feedback" type="button" role="tab" aria-controls="about" aria-selected="false">Feedback</button>      
 				</div>
 				<div class="col-md-3 text-end">
-					<h3>Welcome User!</h3>
+					<h3 class="text-success">Welcome User!</h3>
 				</div>
 			</div>
 		</div>
 	</nav>
 
 	<main role="main" id="content" class="tab-content" style="min-height: 85vh;">
-		<div id="home" class="tab-pane fade show active" class="tab-content" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-			<p>Home</p>
+		<div id="home" class=" tab-pane fade show active" class="tab-content" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+			<div id="content" class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-5 mx-md-3 my-md-3" style="background-color:#80ED99; min-height: 45vh;">
+						<h3 class="text-center" style>JOHN DOE</h3>
+						<div class="d-flex justify-content-between">
+							<h6>Courses : MPC</h6>
+							<h6>Class : 10th</h6>
+						</div>
+                    </div>
+                    <div class="col-md-5 mx-md-3 my-md-3"style="background-color:#57CC99 ; min-height: 45vh;"></div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-5 mx-md-3 my-md-3 order-md-2" style="background-color:#80ED99; min-height: 45vh;">
+						<h3 class="text-center" style>JOHN DOE</h3>
+						<div class="d-flex justify-content-between">
+							<h6>Courses : MPC</h6>
+							<h6>Class : 10th</h6>
+						</div>
+                    </div>
+                    <div class="col-md-5 mx-md-3 my-md-3 order-md-1"style="background-color:#57CC99 ; min-height: 45vh;"></div>
+                </div>
+            </div>
 		</div>
 		<div id="download" class="tab-pane fade" class="tab-content" role="tabpanel" aria-labelledby="pills-courses-tab" tabindex="0">
 			<p>Downloads</p>
@@ -63,7 +84,46 @@
             <p>Exam</p>
 		</div>
         <div id="feedback" class="tab-pane fade" class="tab-content" role="tabpanel" aria-labelledby="pills-about-tab" tabindex="0">
-            <p>Feedback</p>
+            <div id="Enquiry" class="col-md-12 p-5 m-5">
+				<div class="rounded justify-content-center" style="background-color: #57cc99;">
+					<h2 class="py-2">Let's Get in Touch</h2>
+					<form>
+						<div class="col-md-11 px-3 mx-3">
+							<select id="selectCourse" class="form-select mx-1 px-1">
+								<option selected>Select Course</option>
+								<option>ICSE</option>
+								<option>CBSE</option>									
+								<option>CHSE</option>
+								<option>JEE/NEET</option>
+							</select>
+						</div><br>
+						<div class="col-md-11 px-3 mx-3">
+							<select id="selectClass" class="form-select mx-1 px-1">
+								<option selected>Select Class</option>
+								<option>6</option>
+								<option>7</option>									
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>									
+								<option>11</option>
+								<option>12</option>
+							</select>
+						</div><br>
+						<div class="col-md-11 px-3 mx-3">
+							<input type="text" class="form-control" id="name" placeholder="Enter name" required>
+						</div><br>
+						<div class="col-md-11 px-3 mx-3">
+							<input type="tel" class="form-control" id="phone" placeholder="Enter phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+						</div><br>
+						<div class="col-md-11 px-3 mx-3">
+							<textarea class="form-control" id="message" rows="5"></textarea>
+						</div><br>
+						<div class="col-lg-12 d-flex justify-content-center">
+							<button class="my-2 btn btn-success">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
 	</main>
 
