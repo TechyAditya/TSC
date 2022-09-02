@@ -1,2 +1,6 @@
 /DB.txt
 /Plans.txt
+/Test
+/node_modules
+/package.json
+/package-lock.json
