@@ -1,64 +1,8 @@
-function loginView() {
-    db = firebase.firestore();
-    const form = document.getElementById('login');
-    const email = form.email.value;
-    const password = form.password.value;
-    const role = form.role.value;
-    const warn = document.getElementById('warn');
-
-    console.log(email, password);
-    firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((user) => {
-            console.log(user);
-            db.collection(role).doc(user.data().uid).get().then((doc) => {
-                console.log(doc.data());
-                if (doc.exists) {
-                    console.log(doc.data());
-                    if (role == 'students') {
-                        window.open("assets/student.html", "_self")
-                    } else if (role == 'teachers') {
-                        window.open("assets/teacher.html", "_self")
-                    } else if (role == 'admin') {
-                        window.open("assets/admin.html", "_self")
-                    }
-                } else {
-                    warn.style.display = "block";
-                    warn.innerHTML = "You are not registered as a " + role;
-                    firebase.auth().signOut().then();
-                }
-            }).catch((error) => {
-                warn.style.display = "block";
-                warn.innerHTML = error.message;
-            });
-        // }).catch(error => {
-        //     warn.style.display = "block";
-        //     warn.innerHTML = error.message;
-        })
-    console.log(role);
-
-    try {
-        let app = firebase.app();
-        let features = [
-            'auth',
-            'database',
-            'firestore',
-            'functions',
-            'messaging',
-            'storage',
-            'analytics',
-            'remoteConfig',
-            'performance',
-        ].filter(feature => typeof app[feature] === 'function');
-        console.log('Firebase SDK loaded with features:', features);
-    } catch (e) {
-        console.error(e);
-    }
-}
-
 // // const signout = document.querySelector('.signout');
 // console.log(login)
 // // main execution
 document.addEventListener('DOMContentLoaded', function () {
+    role = false
     db = firebase.firestore();
 
     // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
@@ -93,12 +37,60 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (e) {
         console.error(e);
     }
-    firebase.auth().onAuthStateChanged(user => {
+
+    firebase.auth().onAuthStateChanged((user) => {
+        const btn = document.getElementById('loginpg');
         if (user) {
-            firebase.auth().signOut().then();
+            if (role == false) {
+                firebase.auth().signOut().then()
+            }
+            else {
+                db.collection(role).doc(user.uid).get().then((doc) => {
+                    if (doc.exists) {
+                        if (role == 'students') {
+                            window.open("assets/student.html", "_self")
+                        } else if (role == 'teachers') {
+                            window.open("assets/teacher.html", "_self")
+                        } else if (role == 'admin') {
+                            window.open("assets/admin.html", "_self")
+                        }
+                    } else {
+                        btn.innerHTML = "Log in";
+                        btn.disabled = false;
+                        warn.style.display = "block";
+                        warn.innerHTML = "You are not registered as a " + role;
+                        firebase.auth().signOut().then();
+                    }
+                })
+            }
         }
     })
-    debug();
+
+    const trigger = document.getElementById('loginbtn');
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const form = document.getElementById('login');
+        const email = form.email.value;
+        const password = form.password.value;
+        const warn = document.getElementById('warn');
+        const btn = document.getElementById('loginpg');
+        btn.addEventListener('click', (e) => {
+            btn.innerHTML = "Logging in...";
+            btn.disabled = true;
+            e.preventDefault();
+            role = form.role.value;
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(() => {
+                }).catch((error) => {
+                    warn.style.display = "block";
+                    warn.innerHTML = error.message;
+                    btn.innerHTML = "Log in";
+                    btn.disabled = false;
+                });
+        })
+    });
+
+    // debug();
 });
 function debug() {
     db.collection('admin').doc('xtnZlO0ewrfuzjuDbDBbZFAIkf33').get().then(function (doc) {
