@@ -88,8 +88,9 @@
 				</div>
 				<div class="col-md-3 text-end">
 					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Login</button>
-					<button type="button" class="btn btn-success">Register</button>
+					<button type="button" id="loginbtn" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Login</button>
+					<button type="button" id="registerbtn" class="btn btn-success">Register</button>
+					<button type="button" id="dashbtn" class="btn btn-success" style="display: none" onclick="loginView()">Goto Dashboard</button>
 				</div>
 			</div>
 		</div>
@@ -103,28 +104,31 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form>
-						<input id="username" class="form-control form-control-lg d-flex mx-auto" placeholder="Enter Username" required>
-						<input id="password" class="form-control form-control-lg d-flex mx-auto mt-2" placeholder="Enter Password" required>
+					<form id="login">
+						<input id="email" name="email" class="form-control form-control-lg d-flex mx-auto" placeholder="Enter Email" required>
+						<input id="password" name="password" class="form-control form-control-lg d-flex mx-auto mt-2" placeholder="Enter Password" required>
 						<div id="Remember" class="d-flex mx-auto mt-2">
 							<input class="form-check-input" type="checkbox" value="" id="remme">
 							<label class="form-check-label" for="remme"> Remember Me</label><br>
 						</div>
 						<div id="Las" class="d-flex mx-auto mt-2">
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="signInAs" id="student" value="student">
+								<input class="form-check-input" type="radio" name="role" id="student" value="student">
 								<label class="form-check-label" for="student">student</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="signInAs" id="teacher" value="teacher">
+								<input class="form-check-input" type="radio" name="role" id="teacher" value="teacher">
 								<label class="form-check-label" for="teacher">teacher</label>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="signInAs" id="admin" value="admin">
+								<input class="form-check-input" type="radio" name="role" id="admin" value="admin">
 								<label class="form-check-label" for="admin">admin</label>
 							</div>
 						</div>
-						<button class="btn btn-primary btn-lg d-flex mx-auto mt-2 btn-success" type="button" onclick="login()">Login</button>
+						<button class="btn btn-primary btn-lg d-flex mx-auto mt-2 btn-success" type="button" onclick="loginView()">Login</button>
+            <div class="rounded-4 bg-danger" id="warn" style="display: none">
+              
+            </div>
 					</form>
 				</div>
 				<!-- <div class="modal-footer">
