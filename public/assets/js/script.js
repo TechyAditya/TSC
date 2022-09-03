@@ -20,23 +20,23 @@ document.addEventListener('DOMContentLoaded', function () {
     //
     // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-    try {
-        let app = firebase.app();
-        let features = [
-            'auth',
-            'database',
-            'firestore',
-            'functions',
-            'messaging',
-            'storage',
-            'analytics',
-            'remoteConfig',
-            'performance',
-        ].filter(feature => typeof app[feature] === 'function');
-        console.log('Firebase SDK loaded with features:', features);
-    } catch (e) {
-        console.error(e);
-    }
+    // try {
+    //     let app = firebase.app();
+    //     let features = [
+    //         'auth',
+    //         'database',
+    //         'firestore',
+    //         'functions',
+    //         'messaging',
+    //         'storage',
+    //         'analytics',
+    //         'remoteConfig',
+    //         'performance',
+    //     ].filter(feature => typeof app[feature] === 'function');
+    //     console.log('Firebase SDK loaded with features:', features);
+    // } catch (e) {
+    //     console.error(e);
+    // }
 
     firebase.auth().onAuthStateChanged((user) => {
         const btn = document.getElementById('loginpg');
@@ -68,22 +68,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const trigger = document.getElementById('loginbtn');
     trigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        const form = document.getElementById('login');
-        const email = form.email.value;
-        const password = form.password.value;
-        const warn = document.getElementById('warn');
         const btn = document.getElementById('loginpg');
+        e.preventDefault();
         btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const form = document.getElementById('login');
+            const emaill = form.email.value;
+            const passwordd = form.password.value;
+            const warn = document.getElementById('warn');
+            console.log(emaill, passwordd, role);
+
             btn.innerHTML = "Logging in...";
             btn.disabled = true;
-            e.preventDefault();
             role = form.role.value;
-            firebase.auth().signInWithEmailAndPassword(email, password)
+            console.log(emaill, passwordd, role);
+            firebase.auth().signInWithEmailAndPassword(emaill, passwordd)
                 .then(() => {
                 }).catch((error) => {
                     warn.style.display = "block";
                     warn.innerHTML = error.message;
+                    console.log(error)
                     btn.innerHTML = "Log in";
                     btn.disabled = false;
                 });
@@ -92,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // debug();
 });
+
 function debug() {
     db.collection('admin').doc('xtnZlO0ewrfuzjuDbDBbZFAIkf33').get().then(function (doc) {
         if (doc.exists) {
