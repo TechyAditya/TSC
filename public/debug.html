@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.9.3/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.9.3/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.9.3/firebase-performance-compat.js"></script>
+    <!-- 
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="message">
+        <h2>Welcome</h2>
+        <h1>Firebase Hosting Setup Complete</h1>
+        <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something
+            extraordinary!</p>
+        <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
+    <!-- login form  -->
+    <div class="login">
+        <h2>Login</h2>
+        <form action="" method="post">
+            <input type="text" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <!-- signup form  -->
+    <div class="signupform">
+        <form action="" id="signupform" method="post">
+            <h1>Add new student</h1>
+            <label for="email"><b>Email</b></label><br>
+            <input type="email" placeholder="Enter Email" name="email" required><br>
+            <label for="psw"><b>Password</b></label><br>
+            <input type="password" placeholder="Enter Password" name="psw" required><br>
+            <label for="name"><b>Name</b></label><br>
+            <input type="text" placeholder="Enter Name" name="name" required><br>
+            <label for="phone"><b>Phone</b></label><br>
+            <input type="number" placeholder="Enter Phone" name="phone" required><br>
+            <label for="classno"><b>Class</b></label><br>
+            <input type="number" placeholder="Enter Class" name="classno" required><br>
+            <label for="batch"><b>Batch Year</b></label><br>
+            <input type="number" placeholder="Enter Batch Year" name="batch" required><br>
+            <input type="submit" class="signupbtn" value="Add">
+
+            <button type="button" class="clearbtn">Clear</button>
+        </form>
+        <div class="rounded-4 bg-danger" id="warn" style="display: none"></div>
+    </div>
+
+    <div class="teacherform">
+        <form action="" id="teacherform" method="post">
+            <h1>Add new teacher</h1>
+            <label for="email"><b>Email</b></label><br>
+            <input type="email" placeholder="Enter Email" name="email" required><br>
+            <label for="psw"><b>Password</b></label><br>
+            <input type="password" placeholder="Enter Password" name="psw" required><br>
+            <label for="name"><b>Name</b></label><br>
+            <input type="text" placeholder="Enter Name" name="name" required><br>
+            <label for="phone"><b>Phone</b></label><br>
+            <input type="number" placeholder="Enter Phone" name="phone" required><br>
+            <label for="classno"><b>Rating</b></label><br>
+            <input type="number" placeholder="Enter rating" name="rating" required><br>
+            <input type="submit" class="teacherbtn" value="Add">
+
+            <button type="button" class="clearbtn">Clear</button>
+        </form>
+
+        <button class="test">Test</button>
+        <div class="rounded-4 bg-danger" id="warn" style="display: none"></div>
+    </div>
+
+    <!-- sign out button -->
+    <h1>Signout</h1>
+    <button class="signout">Signout</button>
+    <script src="./assets/js/admin.js" defer></script>
+
+
+
+</body>
+
+</html>
+
