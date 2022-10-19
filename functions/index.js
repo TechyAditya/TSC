@@ -14,7 +14,7 @@ exports.createStudent = functions.https.onCall((data, context) => {
     const email = data.email;
     const name = data.name;
     const phone = data.phone;
-    const role = data.role;
+    const role = 'student';
     const classno = data.classno;
     const batch = data.batch;
 
@@ -25,6 +25,28 @@ exports.createStudent = functions.https.onCall((data, context) => {
         classno: classno,
         batch: batch,
         marks: []
+    }).then()
+        .catch(error => {
+            log.write(error);
+        })
+})
+
+exports.createTeacher = functions.https.onCall((data, context) => {
+    const uid = context.auth.uid;
+    const email = data.email;
+    const name = data.name;
+    const phone = data.phone;
+    const role = 'teacher';
+    const rating = data.rating;
+    const subject = data.subject;
+
+    db.collection(role).doc(uid).set({
+        name: name,
+        email: email,
+        phone: phone,
+        rating: rating,
+        subject: subject,
+        classes: []
     }).then()
         .catch(error => {
             log.write(error);
@@ -66,25 +88,27 @@ exports.updateTeacherProfile = functions.https.onCall((data, context) => {
     })
 })
 
-exports.deleteUser = functions.https.onCall((data, context) => {
+exports.deleteUserData = functions.https.onCall((data, context) => {
     const usr = context.auth.uid;
-    const uid = data.uid;
+    const uid = data.uid; // array of uid
     const role = data.role;
+    
     db.collection('admin').doc(usr).get().then((doc) => {
         if (doc.exists) {
-            if (role == 'student') {
-                db.collection('students').doc(uid).delete().then();
-            }
-            else if (role == 'teacher') {
-                db.collection('teacher').doc(uid).delete().then();
-            }
-            else if (role == 'admin') {
-                db.collection('admin').doc(uid).delete().then();
+            for(let i=0; i<uid.length; i++){
+                db.collection(role).doc(uid[i]).delete().then(() => {
+                    admin.auth().deleteUser(uid[i]).then(() => {
+                        return true;
+                    }).catch(error => {
+                        log.write(error);
+                        return false;
+                    })
+                }).catch(error => {
+                    log.write(error);
+                    return false;
+                })
             }
         }
-    })
-    admin.auth().deleteUser(uid).then(() => {
-        return true;
     })
 })
 
