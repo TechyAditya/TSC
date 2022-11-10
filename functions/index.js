@@ -3,11 +3,13 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 var db = admin.firestore();
 
-// exports.test = functions.https.onCall((data, response) => {
-//     return {
-//         message: "Hello from Firebase!"
-//     };
-// });
+
+exports.test = functions.https.onCall((data, response) => {
+    functions.logger.log("Hello logs!", {structuredData: true});
+    return {
+        message: "Hello from Firebase!"
+    };
+});
 
 exports.createStudent = functions.https.onCall((data, context) => {
     const uid = context.auth.uid;
@@ -27,7 +29,7 @@ exports.createStudent = functions.https.onCall((data, context) => {
         marks: []
     }).then()
         .catch(error => {
-            log.write(error);
+            functions.logger.log(JSON.stringify(error));
         })
 })
 
@@ -49,7 +51,7 @@ exports.createTeacher = functions.https.onCall((data, context) => {
         classes: []
     }).then()
         .catch(error => {
-            log.write(error);
+            functions.logger.log(JSON.stringify(error));
         })
 })
 
@@ -69,7 +71,7 @@ exports.updateStudentProfile = functions.https.onCall((data, context) => {
         return true;
     }
     ).catch(error => {
-        log.write(error);
+        functions.logger.log(JSON.stringify(error));
         return false;
     })
 })
@@ -83,31 +85,31 @@ exports.updateTeacherProfile = functions.https.onCall((data, context) => {
         return true;
     }
     ).catch(error => {
-        log.write(error);
+        functions.logger.log(JSON.stringify(error));
         return false;
     })
 })
 
 exports.deleteUserData = functions.https.onCall((data, context) => {
     const usr = context.auth.uid;
-    const uid = data.uid; // array of uid
+    const uid = [...data.uid]; // array of uid
     const role = data.role;
     
     db.collection('admin').doc(usr).get().then((doc) => {
         if (doc.exists) {
+            functions.logger.log("Logged in as admin");
             for(let i=0; i<uid.length; i++){
+                functions.logger.log("Deleting", role, uid[i]);
                 db.collection(role).doc(uid[i]).delete().then(() => {
+                    functions.logger.log("Docs deleted");
                     admin.auth().deleteUser(uid[i]).then(() => {
-                        return true;
-                    }).catch(error => {
-                        log.write(error);
-                        return false;
+                        functions.logger.log("User deleted:", uid[i]);
                     })
-                }).catch(error => {
-                    log.write(error);
-                    return false;
                 })
             }
+        }
+        else {
+            functions.logger.log("Not logged in as admin");
         }
     })
 })
